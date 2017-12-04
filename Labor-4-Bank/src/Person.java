@@ -1,35 +1,45 @@
 
 public class Person implements IPerson {
 
+	String name;
+	Date dateOfBirth;
 	
 	
 	public Person (String aName, Date aDateOfBirth){
 		
-		
-		
+		this.name=aName;
+		setDateOfBirth(aDateOfBirth);
 	}
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return this.name;
 	}
 
 	@Override
 	public void setName(String newName) {
-		// TODO Auto-generated method stub
+		
+		if(newName!=null || newName!=""){
+			
+			this.name=newName;
+		}
 		
 	}
 
 	@Override
 	public Date getDateOfBirth() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.dateOfBirth;
 	}
 
 	@Override
 	public void setDateOfBirth(Date newDateOfBirth) {
-		// TODO Auto-generated method stub
+		
+		if(newDateOfBirth.isValidDate(newDateOfBirth.day, newDateOfBirth.month, newDateOfBirth.year)==true){
+			
+			this.dateOfBirth=newDateOfBirth;
+		}
 		
 	}
 	

@@ -5,15 +5,14 @@
  */
 public class Date {
 
-	private int day;
-	private	int month;
-	private int year;
+	protected int day;
+	protected int month;
+	protected int year;
 	static int anzahlObjekte;
 
-	
 	/**
-	 * Creates a new Date object with date 1.1.1970.
-	 * Use the setDate method for this.
+	 * Creates a new Date object with date 1.1.1970. Use the setDate method for
+	 * this.
 	 */
 	public Date() {
 
@@ -22,26 +21,29 @@ public class Date {
 	}
 
 	/**
-	 * Creates a new Date object with the given values ​​as date.
-	 * 1.1.1970, if the values ​​do not represent a valid date.
+	 * Creates a new Date object with the given values ​​as date. 1.1.1970, if
+	 * the values ​​do not represent a valid date.
 	 * 
-	 * @param day  Day of the Date.
-	 * @param month Month of the Date.
-	 * @param year Year of the Date.
+	 * @param day
+	 *            Day of the Date.
+	 * @param month
+	 *            Month of the Date.
+	 * @param year
+	 *            Year of the Date.
 	 */
 	public Date(int day, int month, int year) {
 
 		this();
 		setDate(day, month, year);
-		
 
 	}
-	
+
 	/**
-	 * Creates a new Date object from an existing Date object.
-	 *  A copy will be made.
+	 * Creates a new Date object from an existing Date object. A copy will be
+	 * made.
 	 * 
-	 * @param other the Date object to be copied.
+	 * @param other
+	 *            the Date object to be copied.
 	 */
 	public Date(Date other) {
 
@@ -50,18 +52,21 @@ public class Date {
 		if (other != null) {
 
 			setDate(other.day, other.month, other.year);
-			
+
 		}
 
 	}
 
 	/**
-	 * Sets the date of this Date object to the passed values.
-	 * If they do not represent a valid date, nothing is done and false is returned.
+	 * Sets the date of this Date object to the passed values. If they do not
+	 * represent a valid date, nothing is done and false is returned.
 	 * 
-	 * @param day the day on which the date should be set.
-	 * @param month the month on which the date should be set.
-	 * @param year the year on which the date should be set.
+	 * @param day
+	 *            the day on which the date should be set.
+	 * @param month
+	 *            the month on which the date should be set.
+	 * @param year
+	 *            the year on which the date should be set.
 	 * @return true if the date has been reset, otherwise false.
 	 */
 	public boolean setDate(int day, int month, int year) {
@@ -80,13 +85,17 @@ public class Date {
 	}
 
 	/**
-	 * Checks whether the transferred values ​​correspond to a valid date.
-	 * This method can / should be static because it does not refer to a specific object.
+	 * Checks whether the transferred values ​​correspond to a valid date. This
+	 * method can / should be static because it does not refer to a specific
+	 * object.
 	 * 
 	 * 
-	 * @param day delivered day.
-	 * @param month delivered month.
-	 * @param year delivered year.
+	 * @param day
+	 *            delivered day.
+	 * @param month
+	 *            delivered month.
+	 * @param year
+	 *            delivered year.
 	 * @return true if the values ​​are valid dates, false otherwise.
 	 */
 	public boolean isValidDate(int day, int month, int year) {
@@ -95,7 +104,7 @@ public class Date {
 
 		int maxDay;
 
-		if ((year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))&& month==2) {
+		if ((year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) && month == 2) {
 
 			maxDay = 29;
 
@@ -152,8 +161,7 @@ public class Date {
 	}
 
 	/**
-	 * Returns the date of this Date object as a string.
-	 * Format is "dd.mm.yyyy".
+	 * Returns the date of this Date object as a string. Format is "dd.mm.yyyy".
 	 * 
 	 * @return formatted string is returned.
 	 */
@@ -162,10 +170,11 @@ public class Date {
 	}
 
 	/**
-	 * Checks if the date of this Date object is before the date of the submitted Date object.
-	 * The other object because you created above.
+	 * Checks if the date of this Date object is before the date of the
+	 * submitted Date object. The other object because you created above.
 	 * 
-	 * @param otherDate the Date object to compare with.
+	 * @param otherDate
+	 *            the Date object to compare with.
 	 * @return true if that date is ahead of the other.
 	 */
 	public boolean isBefore(Date otherDate) {
@@ -191,8 +200,8 @@ public class Date {
 	}
 
 	/**
-	 * Returns a new Date object.
-	 * The date will be one day later than the date of this object.
+	 * Returns a new Date object. The date will be one day later than the date
+	 * of this object.
 	 * 
 	 * @return Date object with a day later date
 	 */
@@ -205,10 +214,9 @@ public class Date {
 			return new Date(1, 1, year + 1);
 		}
 	}
-	
+
 	/**
-	 * Determines the weekday.
-	 * And works with an enum together.
+	 * Determines the weekday. And works with an enum together.
 	 * 
 	 * @return returns the German day of the week.
 	 */
@@ -261,8 +269,7 @@ public class Date {
 	}
 
 	/**
-	 * Counts the number of create objects.
-	 * With a static class variable.
+	 * Counts the number of create objects. With a static class variable.
 	 * 
 	 * @return returns number of create objects.
 	 */
@@ -272,7 +279,7 @@ public class Date {
 	}
 
 	/**
-	 *Deletes objects that are no longer used. 
+	 * Deletes objects that are no longer used.
 	 * 
 	 */
 	public void finalize() {
@@ -282,37 +289,35 @@ public class Date {
 	}
 
 	/**
-	 * Compares objects whether they are the same.
-	 * And say true if they are the same.
+	 * Compares objects whether they are the same. And say true if they are the
+	 * same.
 	 * 
 	 * @return return true or false.
 	 */
 	public boolean equals(Object other) {
-		if(other instanceof Date){
-		Date rek= new Date();
-		rek=(Date) other;
-		
-		if(this.day==rek.day && this.month==rek.month && this.year==rek.year){
-			
-			return true;
-		}
-		
-		
-		
+		if (other instanceof Date) {
+			Date rek = new Date();
+			rek = (Date) other;
 
+			if (this.day == rek.day && this.month == rek.month && this.year == rek.year) {
 
+				return true;
+			}
 
 		}
 		return false;
-}
-	public int getDay(){
+	}
+
+	public int getDay() {
 		return day;
 	}
-	public int getMonth(){
+
+	public int getMonth() {
 		return month;
 	}
-	public int getYear(){
+
+	public int getYear() {
 		return year;
 	}
-	
+
 }

@@ -7,14 +7,16 @@ public class Bank implements IBank {
 	
 	
 	public Bank(int blz, String name){
-		
+	
+		this.blz=blz;
+		this.name=name;
 		
 		
 	}
 	
 	public String toString(){
 		
-		return null;
+		return String.format("%d %s ",this.blz,this.name);
 	
 	}
 	
