@@ -1,23 +1,31 @@
 
 public class SavingsAccount extends Account {
 
+	Date creationDate;
+	Date fixDate;
 	
-	public void fixAccount(Date fixDate, Date creationDate){
+	public void fixAccount(Date fixDate){
 		
-		
+		this.fixDate=fixDate;
 		
 	}
 	
 	public SavingsAccount(IPerson owner, Date creationDate){
 		
-		
+		setOwner(owner);
+		this.creationDate=creationDate;
 	}
 	
 	
 	@Override
 	public boolean deposit(float amount) {
-		// TODO Auto-generated method stub
 		return false;
+	
+	
+		
+		
+	
+		
 	}
 
 	@Override
