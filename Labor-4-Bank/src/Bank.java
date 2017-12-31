@@ -1,6 +1,6 @@
 
 public class Bank implements IBank {
-
+//git test
 	protected IAccount[] accounts;
 	protected int blz;
 	protected String name;
