@@ -16,12 +16,6 @@ public class Bank implements IBank {
 
 	}
 
-	public String toString() {
-
-		return String.format("%d %s ", this.blz, this.name);
-
-	}
-
 	private boolean checkTransfer(IAccount fromAccount, IAccount toAccount, float amount) {
 
 		return true;
@@ -58,7 +52,7 @@ public class Bank implements IBank {
 
 		if (doppelterAccount == false) {
 			index++;
-			accounts[index-1] = newAccount;
+			accounts[index - 1] = newAccount;
 		}
 
 	}
@@ -67,8 +61,8 @@ public class Bank implements IBank {
 	public void deleteAccount(IAccount account) {
 
 		int i;
-		int u=0;
-		sortieren=new IAccount[accounts.length];
+		int u = 0;
+		sortieren = new IAccount[accounts.length];
 
 		for (i = 0; i < accounts.length; i++) {
 			if (accounts[i] != null) {
@@ -79,25 +73,60 @@ public class Bank implements IBank {
 				}
 			}
 
+		}
+
+		for (int o = 0; o < sortieren.length; o++) {
+			if (accounts[o] != null) {
+
+				sortieren[u++] = accounts[o];
+
+			}
+			
+		}
+		accounts=sortieren;
+		
+		sortieren=new IAccount[0];
+		
+		
 	}
-		
-		
-		for(int o=0;o<sortieren.length;o++){
-				if(accounts[o]!=null){
-				
-					
-				sortieren[u++]=accounts[o];
-				
-			}}}
-		
-		
-		
-	
 
 	@Override
 	public boolean transfer(long fromAccountNumber, long toAccountNumber, float amount) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public String toString() {
+
+		String Daten = "";
+		String Kontoinhaber="";
+		int zaehler=1;
+		
+		for(int w=0; w<accounts.length;w++){
+			if(accounts[w]!=null){
+				
+				Kontoinhaber=Kontoinhaber +" Konto "+zaehler+": " +accounts[w].getAccountNo()+" || "+accounts[0].getOwner().getName();
+				zaehler++;
+			}
+				
+				
+				
+			
+			
+			
+		}
+
+		for(int h=0;h<accounts.length;h++){
+			
+			
+		Daten="BLZ:" + this.blz +" ||"+ " Name der Bank:" + this.name +" || "+ Kontoinhaber;	
+			
+			
+			
+		}
+
+		return Daten;
+
 	}
 
 }
