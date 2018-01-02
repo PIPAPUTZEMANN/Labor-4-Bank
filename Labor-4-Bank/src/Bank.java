@@ -17,9 +17,17 @@ public class Bank implements IBank {
 	}
 
 	private boolean checkTransfer(IAccount fromAccount, IAccount toAccount, float amount) {
+		boolean transferErlaubt;
+		if (amount > 0 && fromAccount != toAccount && toAccount.checkTransferToAcc(toAccount, amount) == true
+				&& fromAccount.checkTransferFromAcc(fromAccount, amount) == true) {
 
-		return true;
+			transferErlaubt = true;
 
+		} else {
+			transferErlaubt = false;
+
+		}
+		return transferErlaubt;
 	}
 
 	@Override
@@ -81,52 +89,61 @@ public class Bank implements IBank {
 				sortieren[u++] = accounts[o];
 
 			}
-			
+
 		}
-		accounts=sortieren;
-		
-		sortieren=new IAccount[0];
-		
-		
+		accounts = sortieren;
+
+		sortieren = new IAccount[0];
+
 	}
 
 	@Override
 	public boolean transfer(long fromAccountNumber, long toAccountNumber, float amount) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
+	
+	
+	
+	
+	
 	public String toString() {
 
 		String Daten = "";
-		String Kontoinhaber="";
-		int zaehler=1;
-		
-		for(int w=0; w<accounts.length;w++){
-			if(accounts[w]!=null){
-				
-				Kontoinhaber=Kontoinhaber +" Konto "+zaehler+": " +accounts[w].getAccountNo()+" || "+accounts[0].getOwner().getName();
-				zaehler++;
-			}
-				
-				
-				
-			
-			
-			
+
+		for (int h = 0; h < accounts.length; h++) {
+
+			Daten = Daten + "\nKontonummer:" + accounts[h].getAccountNo() + " || Konto-Besitzer:"
+					+ accounts[h].getOwner().getName() + " || Geburtsjahr:" + accounts[h].getOwner().getDateOfBirth()
+					+ " || Kontostand:" + accounts[h].getBalance() + " || Kontotyp:" + accounts[h];
+
 		}
 
-		for(int h=0;h<accounts.length;h++){
-			
-			
-		Daten="BLZ:" + this.blz +" ||"+ " Name der Bank:" + this.name +" || "+ Kontoinhaber;	
-			
-			
-			
-		}
-
-		return Daten;
+		return "BLZ:" + this.blz + " Bank:" + this.name + Daten;
 
 	}
+	
+	public int getAccountbyAccountNo(long AccountNumber){
+		
+		int res=0;
+		;
+		
+		for(int y=0;y<accounts.length;y++){
+			if(accounts[y]!=null){
+				if(AccountNumber==accounts[y].getAccountNo()){
+					
+					
+					res=y;
+				}
+				
+			}
+			
+		}
+		return res;
+		
+	}
+	
+	
 
 }

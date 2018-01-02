@@ -9,5 +9,12 @@ public interface IAccount {
 	public long getAccountNo();	
 	public float getBalance();
 	
+	
+	public boolean checkTransferToAcc(IAccount toAccount, float amount);
+	public boolean checkTransferFromAcc(IAccount fromAccount,float amount);
+	
+	
+	
+	
 
 }

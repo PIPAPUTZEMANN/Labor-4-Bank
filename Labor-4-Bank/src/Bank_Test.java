@@ -23,7 +23,16 @@ public class Bank_Test {
 
 
 		IAccount newAccount = new SavingsAccount(customer1, new Date(30, 12, 2015));
+		
+		SavingsAccount red=(SavingsAccount)newAccount;
+		red.fixAccount(new Date (22,22,2022));
+		
+		
 		IAccount newAccount1 = new SavingsAccount(customer, new Date(30, 12, 2015));
+		
+		SavingsAccount green= (SavingsAccount)newAccount1;
+		green.fixAccount(new Date(11,11,2011));
+		
 		IAccount newAccount2 = new SavingsAccount(customer, new Date(30, 12, 2015));
 		newAccount.setAccountNo(1);
 		newAccount1.setAccountNo(2);
@@ -37,6 +46,11 @@ public class Bank_Test {
 		//System.out.println(Arrays.toString(Sparkasse.accounts));
 
 		//System.out.println(Arrays.toString(Sparkasse.sortieren));
+		
+		IPerson customer2=new Person("Gertrude Schnittlauchverführerin" , new Date(9,9,1999));
+		IAccount neuerAccount=new CheckingAccount(customer2, new Date(6,6,1966), -1000);
+		neuerAccount.setAccountNo(4);
+		Sparkasse.addAccount(neuerAccount);
 		
 		System.out.println(Sparkasse);
 
