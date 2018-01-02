@@ -49,7 +49,7 @@ public class SavingsAccount extends Account {
 
 		Date constant = new Date(1, 1, 2010);
 
-		if (this.getOwner() == fromAccount.getOwner() && fixDate == null && this.creationDate.isBefore(constant)) {
+		if (this.getOwner() == fromAccount.getOwner() && fixDate == null && this.creationDate.isBefore(constant)!=true) {
 
 			erlaubtZu = true;
 
