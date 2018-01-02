@@ -21,7 +21,9 @@ public class SavingsAccount extends Account {
 	@Override
 	public boolean deposit(float amount) {
 		boolean geldEinzahlen = false;
-		if (erlaubtZu == true) {
+		Date constand=new Date(1,1,2010);
+		
+		if (this.creationDate.isBefore(constand)==false && this.fixDate==null && amount>0) {
 
 			geldEinzahlen = true;
 			this.balance += amount;
@@ -43,11 +45,11 @@ public class SavingsAccount extends Account {
 		return geldAbheben;
 	}
 
-	public boolean checkTransferToAcc(IAccount toAccount, float amount) {
+	public boolean checkTransferToAcc(IAccount fromAccount, float amount) {
 
 		Date constant = new Date(1, 1, 2010);
 
-		if (this.getOwner() == toAccount.getOwner() && fixDate == null && this.creationDate.isBefore(constant)) {
+		if (this.getOwner() == fromAccount.getOwner() && fixDate == null && this.creationDate.isBefore(constant)) {
 
 			erlaubtZu = true;
 
@@ -58,9 +60,9 @@ public class SavingsAccount extends Account {
 		return erlaubtZu;
 	}
 
-	public boolean checkTransferFromAcc(IAccount fromAccount, float amount) {
+	public boolean checkTransferFromAcc(IAccount toAccount, float amount) {
 
-		if (this.getOwner() == fromAccount.getOwner() && this.balance - amount >= 0 && fixDate == null) {
+		if (this.getOwner() == toAccount.getOwner() && this.balance - amount >= 0 && fixDate == null) {
 
 			erlaubtVon = true;
 

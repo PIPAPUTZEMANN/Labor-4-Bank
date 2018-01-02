@@ -18,8 +18,8 @@ public class Bank implements IBank {
 
 	private boolean checkTransfer(IAccount fromAccount, IAccount toAccount, float amount) {
 		boolean transferErlaubt;
-		if (amount > 0 && fromAccount != toAccount && toAccount.checkTransferToAcc(toAccount, amount) == true
-				&& fromAccount.checkTransferFromAcc(fromAccount, amount) == true) {
+		if (amount > 0 && fromAccount != toAccount && toAccount.checkTransferToAcc(fromAccount, amount) == true
+				&& fromAccount.checkTransferFromAcc(toAccount, amount) == true) {
 
 			transferErlaubt = true;
 
@@ -99,15 +99,25 @@ public class Bank implements IBank {
 
 	@Override
 	public boolean transfer(long fromAccountNumber, long toAccountNumber, float amount) {
-		
-		return false;
+
+		boolean transfer = false;
+
+		if (checkTransfer(accounts[getAccountbyAccountNo(fromAccountNumber)],
+				accounts[getAccountbyAccountNo(toAccountNumber)], amount)==true) {
+
+			accounts[getAccountbyAccountNo(fromAccountNumber)].withdraw(amount);
+			accounts[getAccountbyAccountNo(toAccountNumber)].deposit(amount);
+
+			transfer = true;
+		} else {
+
+			System.out.println("Transfer nicht möglich");
+
+		}
+		return transfer;
+
 	}
 
-	
-	
-	
-	
-	
 	public String toString() {
 
 		String Daten = "";
@@ -123,27 +133,24 @@ public class Bank implements IBank {
 		return "BLZ:" + this.blz + " Bank:" + this.name + Daten;
 
 	}
-	
-	public int getAccountbyAccountNo(long AccountNumber){
+
+	public int getAccountbyAccountNo(long AccountNumber) {
+
+		int res = 0;
 		
-		int res=0;
-		;
-		
-		for(int y=0;y<accounts.length;y++){
-			if(accounts[y]!=null){
-				if(AccountNumber==accounts[y].getAccountNo()){
-					
-					
-					res=y;
+
+		for (int y = 0; y < accounts.length; y++) {
+			if (accounts[y] != null) {
+				if (AccountNumber == accounts[y].getAccountNo()) {
+
+					res = y;
 				}
-				
+
 			}
-			
+
 		}
 		return res;
-		
+
 	}
-	
-	
 
 }
